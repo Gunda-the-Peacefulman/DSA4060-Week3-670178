@@ -1,0 +1,11 @@
+movie_id,title,Action,Comedy,Drama,Romance,SciFi
+1,Galaxy Mission,1,0,0,0,1
+2,Love at First Sight,0,1,0,1,0
+3,Cosmic Odyssey,0,0,1,0,1
+4,Laughter Therapy,0,1,0,0,0
+5,Final Heist,1,0,1,0,0
+6,Romantic Sunset,0,0,1,1,0
+7,Cyberpunk 2099,1,0,0,0,1
+8,Heartfelt Melodies,0,0,1,1,0
+9,Funny Neighbors,0,1,0,1,0
+10,Alien Encounter,1,0,0,0,1
