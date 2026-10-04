@@ -149,6 +149,34 @@ The engine follows an 8-stage algorithmic pipeline:
 - **11. Did any recommendation surprise you?** Yes, *Heartfelt Melodies* (Drama + Romance) scored 0.3929 despite Nicholas awarding only 2 stars to *Romantic Sunset*. This occurred because low ratings still add positive weights rather than penalizing features.
 - **12. What important information is the model ignoring?** It ignores negative rating penalties, directors, actors, release year, user reviews, watch time, and temporal recency.
 
+### Conceptual Question: If two users watched the exact same movies but gave different ratings, should this recommender produce the same recommendations?
+
+**Short Answer:** **No, they will usually receive completely different recommendations.**
+
+**Simple Explanation:**
+In this model, simply watching a movie isn't what matters most. The **rating** tells the model **which features the user actually enjoyed**:
+- When a user gives **5 stars**, the model multiplies the movie's genres by **5**, giving those genres heavy weight in the user's profile.
+- When a user gives **1 star**, the model only multiplies the genres by **1**, giving them very little weight.
+
+**Simple Example from our Dataset:**
+Imagine two users both watch the same two movies:
+1. *Galaxy Mission* (Action & SciFi)
+2. *Love at First Sight* (Romance & Comedy)
+
+- **User 1 (Action/SciFi fan):**
+  - Rates *Galaxy Mission* **5 stars** and *Love at First Sight* **1 star**.
+  - Their profile will be dominated by **Action and SciFi**.
+  - **Top Recommendation:** *Alien Encounter* (Action & SciFi).
+
+- **User 2 (Romance/Comedy fan):**
+  - Rates *Galaxy Mission* **1 star** and *Love at First Sight* **5 stars**.
+  - Their profile will be dominated by **Romance and Comedy**.
+  - **Top Recommendation:** *Funny Neighbors* (Romance & Comedy).
+
+Even though both users watched the **exact same movies**, their different ratings led to completely different preference profiles and completely different recommendations!
+
+*(The only rare exception is if their ratings are scaled identically—such as User 1 giving all 2 stars and User 2 giving all 4 stars. When normalized, the ratios remain identical, producing the same ranking.)*
+
 ---
 
 ## 6. Limitations of the Model
@@ -166,7 +194,7 @@ The engine follows an 8-stage algorithmic pipeline:
 ### Option A: Using `uv` (Fastest, zero-config)
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/DSA4060-Week3-670178.git
+git clone https://github.com/Gunda-the-Peacefulman/DSA4060-Week3-670178.git
 cd DSA4060-Week3-670178
 
 # Run Jupyter Lab with all dependencies automatically installed
