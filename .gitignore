@@ -1,0 +1,13 @@
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# Generator scratch script
+generate_notebook.py
+
+# Python cache & Jupyter checkpoints
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
